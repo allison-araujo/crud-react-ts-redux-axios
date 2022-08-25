@@ -14,7 +14,6 @@ class User {
   };
 
   async listUsers() {
-    console.log("estou em list User");
     try {
       const res = await axios.get(
         `${this.BASE_URL}/users`,

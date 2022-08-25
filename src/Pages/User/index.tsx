@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import User from "../../Api/api";
 import Content from "../../components/Content";
+import Header from "../../components/Header";
+import Layout from "../../components/Layout";
 import List from "../../components/List";
 import Loading from "../../components/Loading";
 import { Test } from "./styles";
@@ -24,8 +26,8 @@ interface IDataUserProps {
   password?: string;
 
   name: {
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
   };
   phone: string;
 }
@@ -40,8 +42,8 @@ const ListUser = () => {
       setLoading(true);
       user.listUsers().then(res => {
         const filterData = res.map((item: IDataUserProps) => ({
-          first: item.name.firstName,
-          last: item.name.lastName,
+          firstName: item.name.firstname,
+          lastName: item.name.lastname,
           id: item.id,
           email: item.email,
           userName: item.userName,
@@ -49,6 +51,8 @@ const ListUser = () => {
           city: item.address.city,
           number: item.address.number,
           street: item.address.street,
+          lat: item.address.geolocation.lat,
+          long: item.address.geolocation.long,
         }));
         setFilterUser(filterData);
         setLoading(false);
@@ -60,16 +64,19 @@ const ListUser = () => {
   }, []);
 
   return (
-    <Content>
-      <Test>Teste </Test>
-      {filterUser.length === 0 ? (
-        ""
-      ) : (
-        <Loading spinning={loading}>
-          <List user={filterUser} />
-        </Loading>
-      )}
-    </Content>
+    <Layout>
+      <Header title="Teste Front End Edesoft" />
+      <Content>
+        <Test />
+        {filterUser.length === 0 ? (
+          ""
+        ) : (
+          <Loading spinning={loading}>
+            <List user={filterUser} />
+          </Loading>
+        )}
+      </Content>
+    </Layout>
   );
 };
 

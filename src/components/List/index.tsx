@@ -11,12 +11,12 @@ interface IUserProps {
   city: string;
   street: string;
   number: number;
-  zipcode: string;
+  zipcode?: string;
   lat: string;
   long: string;
-  id: number;
+  id?: number;
   email: string;
-  userName: string;
+  userName?: string;
   password?: string;
 }
 
@@ -36,31 +36,21 @@ const List = ({ user }: User) => {
               <Th>Numero</Th>
               <Th>Latitude</Th>
               <Th>Longitude</Th>
-              <Th>Nome de usuario</Th>
-              <Th>ZipCode</Th>
             </Tr>
           </Thead>
 
           {user.map((item: IUserProps) => (
             <Tbody>
-              <Tr>
-                <Td>
-                  {item.firstName}
-                  {item.lastName}
-                </Td>
-                <Td>
-                  {item.phone}
-                  {item.city}
-                  {item.street}
-                  {item.number}
-                  {item.zipcode}
-                  {item.lat}
-                  {item.long}
-                  {item.id}
-                  {item.email}
-                  {item.userName}
-                  {item.password}
-                </Td>
+              <Tr key={item.id}>
+                <Td>{item.firstName}</Td>
+                <Td>{item.lastName}</Td>
+                <Td>{item.email}</Td>
+                <Td>{item.phone}</Td>
+                <Td>{item.city}</Td>
+                <Td>{item.street}</Td>
+                <Td>{item.number}</Td>
+                <Td>{item.lat}</Td>
+                <Td>{item.long}</Td>
               </Tr>
             </Tbody>
           ))}
