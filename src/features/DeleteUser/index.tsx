@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import User from "../../Api/api";
 import Content from "../../components/Content";
-import Header from "../../components/Header";
-import Layout from "../../components/Layout";
-import List from "../../components/List";
+import ListDelete from "../../components/ListDelete";
 import Loading from "../../components/Loading";
+import User from "../../services/api";
 import { Test } from "./styles";
 
 interface IDataUserProps {
@@ -12,12 +10,6 @@ interface IDataUserProps {
     city: string;
     street: string;
     number: number;
-    zipcode: string;
-
-    geolocation: {
-      lat: string;
-      long: string;
-    };
   };
 
   id: number;
@@ -32,7 +24,13 @@ interface IDataUserProps {
   phone: string;
 }
 
-const ListUser = () => {
+const Delete = () => {
+  // const dispatch = useDispatch();
+  // const users = useSelector(store => store.users);
+
+  // const handleRemoveUser = (id) => {
+  //   dispatch(deleteUser({ id }));
+
   const [loading, setLoading] = useState(false);
   const [filterUser, setFilterUser] = useState([] as any);
   const user = new User();
@@ -46,13 +44,6 @@ const ListUser = () => {
           lastName: item.name.lastname,
           id: item.id,
           email: item.email,
-          userName: item.userName,
-          phone: item.phone,
-          city: item.address.city,
-          number: item.address.number,
-          street: item.address.street,
-          lat: item.address.geolocation.lat,
-          long: item.address.geolocation.long,
         }));
         setFilterUser(filterData);
         setLoading(false);
@@ -64,20 +55,17 @@ const ListUser = () => {
   }, []);
 
   return (
-    <Layout>
-      <Header title="Teste Front End Edesoft" />
-      <Content>
-        <Test />
-        {filterUser.length === 0 ? (
-          ""
-        ) : (
-          <Loading spinning={loading}>
-            <List user={filterUser} />
-          </Loading>
-        )}
-      </Content>
-    </Layout>
+    <Content>
+      <Test />
+      {filterUser.length === 0 ? (
+        ""
+      ) : (
+        <Loading spinning={loading}>
+          <ListDelete user={filterUser} />
+        </Loading>
+      )}
+    </Content>
   );
 };
 
-export default ListUser;
+export default Delete;

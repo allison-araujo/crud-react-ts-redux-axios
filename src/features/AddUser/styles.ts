@@ -1,17 +1,13 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  width: 100%;
-  flex-direction: column;
   display: flex;
   align-items: center;
-  padding-top: 10px;
-  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 `;
 export const Input = styled.input`
   font-size: 16px;
   padding: 15px;
-  text-align: left;
-
   width: 50%;
   border: none;
   background-color: #d7dbdd;
@@ -33,8 +29,15 @@ export const Button = styled.button`
   transition: opacity 0.3s;
 `;
 
-export const Column = styled.div``;
+export const Column = styled.div`
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Row = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: center;
 `;

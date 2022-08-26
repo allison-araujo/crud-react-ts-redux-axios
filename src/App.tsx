@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
-import AddUser from "./Pages/AddUser";
-import Dashboard from "./Pages/Dashboard";
-import Delete from "./Pages/DeleteUser";
-import EditUser from "./Pages/EditUser";
-import User from "./Pages/User";
+import AddUser from "./features/AddUser";
+import Dashboard from "./features/Dashboard";
+import Delete from "./features/DeleteUser";
+import EditUser from "./features/EditUser";
+import User from "./features/User";
 function App() {
   return (
     <BrowserRouter>
@@ -15,8 +15,8 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/list" element={<User />} />
           <Route path="/add" element={<AddUser />} />
-          <Route path="/delete/:id" element={<Delete />} />
           <Route path="/update/:id" element={<EditUser />} />
+          <Route path="/delete/:id" element={<Delete />} />
         </Routes>
       </Layout>
     </BrowserRouter>
