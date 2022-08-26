@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Content from "../../components/Content";
 import ListDelete from "../../components/ListDelete";
 import Loading from "../../components/Loading";
-import User from "../../services/api";
+
 import { Test } from "./styles";
 
 interface IDataUserProps {
@@ -33,26 +33,25 @@ const Delete = () => {
 
   const [loading, setLoading] = useState(false);
   const [filterUser, setFilterUser] = useState([] as any);
-  const user = new User();
 
-  useEffect(() => {
-    try {
-      setLoading(true);
-      user.listUsers().then(res => {
-        const filterData = res.map((item: IDataUserProps) => ({
-          firstName: item.name.firstname,
-          lastName: item.name.lastname,
-          id: item.id,
-          email: item.email,
-        }));
-        setFilterUser(filterData);
-        setLoading(false);
-      });
-    } catch (error) {
-      alert("Nao foi possivel buscar Pessoa");
-      setLoading(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     setLoading(true);
+  //     user.listUsers().then(res => {
+  //       const filterData = res.map((item: IDataUserProps) => ({
+  //         firstName: item.name.firstname,
+  //         lastName: item.name.lastname,
+  //         id: item.id,
+  //         email: item.email,
+  //       }));
+  //       setFilterUser(filterData);
+  //       setLoading(false);
+  //     });
+  //   } catch (error) {
+  //     alert("Nao foi possivel buscar Pessoa");
+  //     setLoading(false);
+  //   }
+  // }, []);
 
   return (
     <Content>
