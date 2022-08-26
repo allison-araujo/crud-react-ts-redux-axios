@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import http from "../../http";
+import http from "../../http/http";
 
 import { UserType } from "../../ts";
 
