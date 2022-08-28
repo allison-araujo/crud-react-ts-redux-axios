@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import http from "../../http/http";
-import type { RootState } from '../../store';
+import type { RootState } from "../../store";
 import { UserType } from "../../ts";
-
-
+import { AppDispatch } from "./../../store";
 
 interface userSliceState {
   users: UserType[];
@@ -12,7 +11,7 @@ interface userSliceState {
 
 const initialState: userSliceState = {
   users: [],
-}
+};
 
 export const userSlice = createSlice({
   name: "user",
@@ -22,12 +21,12 @@ export const userSlice = createSlice({
       state.users = action.payload;
     },
     getUsers: (state, action) => {
-      state.users = [action.payload];
+      state.users = action.payload;
     },
   },
 });
 
-export const getUserAsync = () => async (dispatch: any) => {
+export const getUserAsync = () => async (dispatch: AppDispatch) => {
   try {
     const response = await axios.get(`${http}/users`);
 
@@ -37,17 +36,19 @@ export const getUserAsync = () => async (dispatch: any) => {
   }
 };
 
-export const addUsersAsync = (data: UserType) => async (dispatch: any) => {
-  try {
-    const response = await axios.post(`${http}/user`, data);
+export const addUsersAsync =
+  (data: UserType) => async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.post(`${http}/user`, data);
 
-    dispatch(addUser(response.data));
-  } catch (error) {
-    return error;
-  }
-};
+      dispatch(addUser(response.data));
+    } catch (error) {
+      return error;
+    }
+  };
 
 export const { addUser, getUsers } = userSlice.actions;
-export const listUser = (state: { user: { data: UserType }) => state.user.data;
+// export const listUser = (state: { user: { data: UserType }) => state.user.data;
+
 export default userSlice.reducer;
-export const selectCount = (state: RootState) => state.users.value
+export const select = (state: RootState) => state.users;

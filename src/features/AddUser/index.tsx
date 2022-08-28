@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Content from "../../components/Content";
+import { RootState } from "../../store";
 import { UserNameType, UserType } from "../../ts";
-import { addUsersAsync, listUser } from "../UserSlice/UserSlice";
+import { addUsersAsync } from "../UserSlice/UserSlice";
 import { Button, Column, Container, Input, Row } from "./styles";
 
 const AddUser = () => {
-  const user = useSelector(listUser);
+  const user = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch();
   const [newUser, setNewUser] = useState<UserType>();
   const [name, setName] = useState<UserNameType>();
