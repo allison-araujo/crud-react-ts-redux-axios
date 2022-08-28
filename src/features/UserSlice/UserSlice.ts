@@ -29,7 +29,6 @@ export const userSlice = createSlice({
 export const getUserAsync = () => async (dispatch: AppDispatch) => {
   try {
     const response = await axios.get(`${http}/users`);
-
     dispatch(getUsers(response.data));
   } catch (error) {
     return error;
@@ -37,9 +36,9 @@ export const getUserAsync = () => async (dispatch: AppDispatch) => {
 };
 
 export const addUsersAsync =
-  (data: UserType) => async (dispatch: AppDispatch) => {
+  (user: UserType) => async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.post(`${http}/user`, data);
+      const response = await axios.post(`${http}/users`, user);
 
       dispatch(addUser(response.data));
     } catch (error) {
@@ -48,7 +47,7 @@ export const addUsersAsync =
   };
 
 export const { addUser, getUsers } = userSlice.actions;
-// export const listUser = (state: { user: { data: UserType }) => state.user.data;
+// export const listUser = (state: { user: :UserType) => state.user.data;
 
 export default userSlice.reducer;
 export const select = (state: RootState) => state.users;
