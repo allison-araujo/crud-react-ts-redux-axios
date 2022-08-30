@@ -1,8 +1,8 @@
 import { ButtonClick } from "./styles";
 
-type IButtonProps = {
+interface IButtonProps {
   text: string;
-};
+}
 
 const Button = ({ text }: IButtonProps) => {
   return <ButtonClick>{text}</ButtonClick>;

@@ -6,7 +6,7 @@ import { UserType } from "../../ts";
 import { addUser } from "../UserSlice/UserSlice";
 import { Button, Column, Container, Input, Row } from "./styles";
 
-const initialStateUser: UserType = {
+const initialValuesUser: UserType = {
   email: "",
   userName: "",
   password: "",
@@ -31,7 +31,7 @@ const initialStateUser: UserType = {
 const AddUser = () => {
   const user = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch();
-  const [values, setValues] = useState(initialStateUser);
+  const [values, setValues] = useState(initialValuesUser);
 
   const handleSubmit = () => {
     dispatch(addUser(values));

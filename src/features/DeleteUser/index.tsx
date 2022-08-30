@@ -1,23 +1,22 @@
-import { useState } from "react";
 import Content from "../../components/Content";
 
 import { Test } from "./styles";
 
-const Delete = () => {
-   const dispatch = useDispatch();
-   const users = useSelector(store => store.users);
+const DeleteUser = () => {
+  // const dispatch = useAppDispatch();
+  // const users = useAppSelector(store => store.users);
 
-   const handleRemoveUser = (id) => {
-     dispatch(deleteUser({ id }));
+  //  const handleRemoveUser = (id) => {
+  //    dispatch(deleteUser({ id }));
 
-  const [loading, setLoading] = useState(false);
-  const [filterUser, setFilterUser] = useState([] as any);
+  // const [loading, setLoading] = useState(false);
+  // const [filterUser, setFilterUser] = useState([] as any);
 
   return (
     <Content>
-      <Test />
+      <Test>Delete Users</Test>
     </Content>
   );
 };
 
-export default Delete;
+export default DeleteUser;
