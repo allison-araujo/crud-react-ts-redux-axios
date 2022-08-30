@@ -1,3 +1,2 @@
-# Teste Desenvoldor Front-End Edesoft
+# crud utilizando axios com react e redux/redux-toolkit
 
-### crud desenvolvido para concorrer a vaga de dev front end na edesoft, utilizando React,Redux, Typescript
