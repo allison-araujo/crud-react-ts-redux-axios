@@ -4,11 +4,14 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
 `;
 export const Input = styled.input`
+  display: flex;
+  justify-content: center;
+  width: 90%;
   font-size: 16px;
-  padding: 15px;
-  width: 50%;
+  padding: 25px;
   border: none;
   background-color: #d7dbdd;
   border-radius: 8px;
@@ -16,17 +19,16 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  margin: 40px;
-  width: 15%;
-  height: 45px;
-  padding: 10px;
-  border-radius: 8px;
+  display: flex;
+  width: 40%;
+  height: 70px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
   border: none;
   color: #fff;
   background-color: #1e90ff;
-  transition: opacity 0.3s;
+  flex-direction: column;
 `;
 
 export const Column = styled.div`
