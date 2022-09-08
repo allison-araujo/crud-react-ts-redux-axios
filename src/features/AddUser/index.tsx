@@ -8,7 +8,7 @@ import { Button, Column, Container, Input, Row } from "./styles";
 
 const initialValuesUser: UserType = {
   email: "",
-  userName: "",
+  username: "",
   password: "",
   id: 0,
   name: {
@@ -33,8 +33,28 @@ const AddUser = () => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(initialValuesUser);
 
+  const {
+    email,
+    username,
+    password,
+    id,
+    name: { firstname, lastname },
+    address: {
+      city,
+      street,
+      number,
+      zipcode,
+      geolocation: { lat, long },
+    },
+    phone,
+  } = values;
+
   const handleSubmit = () => {
     dispatch(addUser(values));
+  };
+
+  const handleInputChange = (e: any) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
@@ -45,69 +65,67 @@ const AddUser = () => {
             <Input
               type="text"
               placeholder="Digite o nome.."
-              value={values.name.firstname}
-              onChange={e =>
-                setValues({ ...values, firstname: e.target.value })
-              }
+              value={firstname}
+              onChange={handleInputChange}
             />
 
             <Input
               type="text"
               placeholder="Sobrenome"
-              value={values.name.lastname}
-              onChange={e => setValues({ ...values, name: e.target.value })}
+              value={lastname}
+              onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Digite seu Email"
-              value={values.email}
-              onChange={e => setValues({ ...values, email: e.target.value })}
+              value={email}
+              onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Nome de Usuário"
-              value={values.userName}
-              onChange={e => setValues({ ...values, username: e.target.value })}
+              value={username}
+              onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Password"
-              value={values.password}
-              onChange={e => setValues({ ...values, password: e.target.value })}
+              value={password}
+              onChange={handleInputChange}
             />
           </Column>
           <Column>
             <Input
               type="text"
               placeholder="Cidade"
-              value={values.address.city}
-              onChange={e => setValues({ ...values, city: e.target.value })}
+              value={city}
+              onChange={handleInputChange}
             />
 
             <Input
               type="text"
               placeholder="Rua"
-              value={values.address.street}
-              onChange={e => setValues({ ...values, street: e.target.value })}
+              value={street}
+              onChange={handleInputChange}
             />
 
             <Input
               type="text"
               placeholder="Numero"
-              value={values.address.number}
-              onChange={e => setValues({ ...values, number: e.target.value })}
+              value={number}
+              onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Telefone"
-              value={values.phone}
-              onChange={e => setValues({ ...values, phone: e.target.value })}
+              value={phone}
+              onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="ZipCode"
-              value={values.address.zipcode}
-              onChange={e => setValues({ ...values, zipcode: e.target.value })}
+              value={zipcode}
+              onChange={handleInputChange}
             />
           </Column>
         </Row>

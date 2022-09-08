@@ -19,9 +19,8 @@ export type UserType = {
   address: UserAddressType;
   id: number;
   email: string;
-  userName: string;
+  username: string;
   password?: string;
-
   name: UserNameType;
   phone: string;
 };
