@@ -9,4 +9,12 @@ export const Container = styled.input`
   background-color: #d7dbdd;
   border-radius: 8px;
   margin: 10px;
+
+  @media (min-width: 960px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
