@@ -17,7 +17,6 @@ export type UserNameType = {
 
 export type UserType = {
   address: UserAddressType;
-  id: number;
   email: string;
   username: string;
   password?: string;

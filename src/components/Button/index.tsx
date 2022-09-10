@@ -4,8 +4,8 @@ interface IButtonProps {
   text: string;
 }
 
-const Button = ({ text }: IButtonProps) => {
-  return <ButtonClick>{text}</ButtonClick>;
+const Button = ({ text, ...rest }: IButtonProps) => {
+  return <ButtonClick {...rest}>{text}</ButtonClick>;
 };
 
 export default Button;
