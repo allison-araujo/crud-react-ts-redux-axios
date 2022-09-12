@@ -24,6 +24,26 @@ export const Button = styled.button`
   :hover {
     background-color: aquamarine;
   }
+  @media (max-width: 1200px) {
+    width: 50%;
+  }
+
+  @media (max-width: 960px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+
+  /**
+  breakpoints comuns
+  1200px desktop
+  960px tablets
+  768px tablets retrato
+  480px snarthphone paisagem
+  320px smartphone retrato
+  */
 `;
 
 export const Column = styled.div`
