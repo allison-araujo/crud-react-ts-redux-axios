@@ -16,9 +16,6 @@ const Dashboard = () => {
         <Link style={{ textDecoration: "none" }} to={`/add/${id}`}>
           <Button text="Editar Usuários" />
         </Link>
-        <Link style={{ textDecoration: "none" }} to={`/delete/${id}`}>
-          <Button text="Deletar Usuários" />
-        </Link>
       </Direction>
     </>
   );
