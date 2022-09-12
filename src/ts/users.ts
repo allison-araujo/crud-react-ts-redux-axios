@@ -6,7 +6,7 @@ export type UserAddressGeolocationType = {
 export type UserAddressType = {
   city: string;
   street: string;
-  number: number;
+  number: number | string;
   zipcode: string;
   geolocation: UserAddressGeolocationType;
 };

@@ -17,10 +17,14 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    addUser: (state, action) => {
+    createUser: (state, action) => {
       state.users = action.payload;
     },
     getUsers: (state, action) => {
+      state.users = action.payload;
+    },
+
+    deleteUser: (state, action) => {
       state.users = action.payload;
     },
   },
@@ -29,6 +33,7 @@ export const userSlice = createSlice({
 export const getUserAsync = () => async (dispatch: AppDispatch) => {
   try {
     const response = await axios.get(`${http}/users`);
+
     dispatch(getUsers(response.data));
   } catch (error) {
     return error;
@@ -40,13 +45,24 @@ export const addUsersAsync =
     try {
       const response = await axios.post(`${http}/users`, user);
 
-      dispatch(addUser(response.data));
+      dispatch(createUser(response.data));
     } catch (error) {
       return error;
     }
   };
 
-export const { addUser, getUsers } = userSlice.actions;
+// export const deleteUserState =
+//   (id: number) => async (dispatch: AppDispatch) => {
+//     try {
+//       const response = await axios.delete(`${http}/users/${id}`);
+
+//       dispatch(deleteUser(response.data));
+//     } catch (error) {
+//       return error;
+//     }
+//   };
+
+export const { createUser, getUsers } = userSlice.actions;
 // export const listUser = (state: { user: :UserType) => state.user.data;
 
 export default userSlice.reducer;
