@@ -4,7 +4,6 @@ import http from "../../http/http";
 import type { RootState } from "../../store";
 import { UserType } from "../../ts";
 import { AppDispatch } from "./../../store";
-
 interface userSliceState {
   users: UserType[];
 }
@@ -22,9 +21,10 @@ export const userSlice = createSlice({
     },
     getUsers: (state, action) => {
       state.users = action.payload;
+      console.log("userlist", state.users);
     },
 
-    deleteUser: (state, action) => {
+    deleteUserId: (state, action) => {
       state.users = action.payload;
     },
   },
@@ -51,19 +51,18 @@ export const addUsersAsync =
     }
   };
 
-// export const deleteUserState =
-//   (id: number) => async (dispatch: AppDispatch) => {
-//     try {
-//       const response = await axios.delete(`${http}/users/${id}`);
+export const deleteUserState =
+  (id: number) => async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.delete(`${http}/users/${id}`);
 
-//       dispatch(deleteUser(response.data));
-//     } catch (error) {
-//       return error;
-//     }
-//   };
+      dispatch(deleteUserId(response.data));
+    } catch (error) {
+      return error;
+    }
+  };
 
-export const { createUser, getUsers } = userSlice.actions;
-// export const listUser = (state: { user: :UserType) => state.user.data;
+export const { createUser, getUsers, deleteUserId } = userSlice.actions;
 
 export default userSlice.reducer;
 export const select = (state: RootState) => state.users;
