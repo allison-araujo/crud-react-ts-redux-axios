@@ -3,8 +3,9 @@ import Header from "./components/Header";
 import Layout from "./components/Layout";
 import AddUser from "./features/AddUser";
 import Dashboard from "./features/Dashboard";
-import DeleteUser from "./features/DeleteUser";
+
 import EditUser from "./features/EditUser";
+import ListUser from "./features/User";
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
         <Header title="Teste Front End Edesoft" />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/add" element={<AddUser />} />
-          <Route path="/update/:id" element={<EditUser />} />
-          <Route path="/delete/:id" element={<DeleteUser />} />
+          <Route path="/create-user" element={<AddUser />} />
+          <Route path="/list-user" element={<ListUser />} />
+          <Route path="/update-user/:id" element={<EditUser />} />
         </Routes>
       </Layout>
     </BrowserRouter>
