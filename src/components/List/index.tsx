@@ -2,14 +2,14 @@ import { UserType } from "../../ts";
 import TableUser from "../TableUser";
 import { Tbody } from "./styles";
 
-type User = {
+type ArrayUser = {
   user: [];
 };
 
-const List = ({ user }: User) => {
+const List = ({ user }: ArrayUser) => {
   return (
     <>
-      {user &&
+      {user !== null &&
         user.map((item: UserType) => (
           <Tbody>
             <TableUser
