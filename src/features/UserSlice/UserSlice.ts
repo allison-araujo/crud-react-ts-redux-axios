@@ -1,38 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import http from "../../http/http";
-import type { RootState } from "../../store";
-import { UserType } from "../../ts";
+import http from "../../http/api";
 import { AppDispatch } from "./../../store";
-interface userSliceState {
-  users: UserType[];
-}
-
-const initialState: userSliceState = {
-  users: [],
-};
+import { UserType } from "./../../ts/users";
 
 export const userSlice = createSlice({
-  name: "user",
-  initialState,
+  name: "users",
+  initialState: [],
   reducers: {
     createUser: (state, action) => {
-      state.users = action.payload;
+      state = action.payload;
     },
     getUsers: (state, action) => {
-      state.users = action.payload;
-      console.log("userlist", state.users);
+      state = action.payload;
     },
 
     deleteUserId: (state, action) => {
-      state.users = action.payload;
+      state = action.payload;
     },
   },
 });
 
 export const getUserAsync = () => async (dispatch: AppDispatch) => {
   try {
-    const response = await axios.get(`${http}/users`);
+    const response = await http.get(`/users`);
 
     dispatch(getUsers(response.data));
   } catch (error) {
@@ -43,7 +33,7 @@ export const getUserAsync = () => async (dispatch: AppDispatch) => {
 export const addUsersAsync =
   (user: UserType) => async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.post(`${http}/users`, user);
+      const response = await http.post(`/users`, user);
 
       dispatch(createUser(response.data));
     } catch (error) {
@@ -54,7 +44,7 @@ export const addUsersAsync =
 export const deleteUserState =
   (id: number) => async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.delete(`${http}/users/${id}`);
+      const response = await http.delete(`/users/${id}`);
 
       dispatch(deleteUserId(response.data));
     } catch (error) {
@@ -65,4 +55,3 @@ export const deleteUserState =
 export const { createUser, getUsers, deleteUserId } = userSlice.actions;
 
 export default userSlice.reducer;
-export const select = (state: RootState) => state.users;
