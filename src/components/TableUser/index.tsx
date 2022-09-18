@@ -1,3 +1,4 @@
+import { PropsUser } from "../../ts";
 import { Th, Tr } from "./styles";
 
 const TableUser = ({
@@ -12,7 +13,7 @@ const TableUser = ({
   long,
   lat,
   password,
-}: any) => {
+}: PropsUser) => {
   return (
     <Tr key={id}>
       <Th> {id}</Th>
