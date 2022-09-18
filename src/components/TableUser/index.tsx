@@ -1,35 +1,31 @@
 import { Th, Tr } from "./styles";
 
-export type PropsUser = {
-  email: string;
-  username: string;
-  password: string;
-  id: number;
-  firstname: string;
-  lastname: string;
-  city: string;
-  street: string;
-  number: number;
-  zipcode: string;
-  lat: string;
-  long: string;
-  phone: string;
-};
-
-const TableUser = (user: PropsUser) => {
+const TableUser = ({
+  id,
+  email,
+  username,
+  firstname,
+  lastname,
+  city,
+  street,
+  number,
+  long,
+  lat,
+  password,
+}: any) => {
   return (
-    <Tr key={user.id}>
-      <Th> {user.id}</Th>
-      <Th>{user.email}</Th>
-      <Th>{user.username}</Th>
-      <Th>{user.password}</Th>
-      <Th>{user.firstname}</Th>
-      <Th>{user.lastname}</Th>
-      <Th>{user.city}</Th>
-      <Th>{user.street}</Th>
-      <Th>{user.number}</Th>
-      <Th>{user.lat}</Th>
-      <Th>{user.long}</Th>
+    <Tr key={id}>
+      <Th> {id}</Th>
+      <Th>{email}</Th>
+      <Th>{username}</Th>
+      <Th>{password}</Th>
+      <Th>{firstname}</Th>
+      <Th>{lastname}</Th>
+      <Th>{city}</Th>
+      <Th>{street}</Th>
+      <Th>{number}</Th>
+      <Th>{lat}</Th>
+      <Th>{long}</Th>
     </Tr>
   );
 };

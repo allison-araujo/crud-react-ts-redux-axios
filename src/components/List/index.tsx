@@ -11,7 +11,7 @@ const List = ({ user }: ArrayUser) => {
     <>
       {user !== null &&
         user.map((item: UserType) => (
-          <Tbody>
+          <Tbody key={item.id}>
             <TableUser
               key={item.id}
               id={item.id}
