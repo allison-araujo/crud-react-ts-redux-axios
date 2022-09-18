@@ -25,14 +25,6 @@ export type UserType = {
   phone: string;
 };
 
-export type UserDelete = {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  id: number;
-};
-
 export type PropsUser = {
   email: string;
   username: string;
