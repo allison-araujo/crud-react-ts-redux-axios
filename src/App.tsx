@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <Header title="Teste Front End Edesoft" />
+        <Header title="Cadastro de Usuários" />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/create-user" element={<AddUser />} />

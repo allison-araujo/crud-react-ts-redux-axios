@@ -40,3 +40,7 @@ export type PropsUser = {
   long: string;
   phone: string;
 };
+
+export type ArrayUser = {
+  user: [];
+};
