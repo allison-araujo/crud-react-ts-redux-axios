@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Content from "../../components/Content";
-import { RootState } from "../../store";
+import Input from "../../components/Input/Input";
 import { UserType } from "../../ts";
-import { addUser } from "../UserSlice/UserSlice";
-import { Button, Column, Container, Input, Row } from "./styles";
+import { createUser } from "../UserSlice/UserSlice";
+import { Button, Column, Container, Row } from "./styles";
 
 const initialValuesUser: UserType = {
   email: "",
@@ -29,31 +30,17 @@ const initialValuesUser: UserType = {
 };
 
 const AddUser = () => {
-  const user = useSelector((state: RootState) => state.users);
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const [values, setValues] = useState(initialValuesUser);
 
-  const {
-    email,
-    username,
-    password,
-    id,
-    name: { firstname, lastname },
-    address: {
-      city,
-      street,
-      number,
-      zipcode,
-      geolocation: { lat, long },
-    },
-    phone,
-  } = values;
-
   const handleSubmit = () => {
-    dispatch(addUser(values));
+    dispatch(createUser(values));
+    console.log("valors handle", values);
+    navigate("/list-user");
   };
-
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
@@ -65,32 +52,32 @@ const AddUser = () => {
             <Input
               type="text"
               placeholder="Digite o nome.."
-              value={firstname}
+              value={values.name.firstname}
               onChange={handleInputChange}
             />
 
             <Input
               type="text"
               placeholder="Sobrenome"
-              value={lastname}
+              value={values.name.lastname}
               onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Digite seu Email"
-              value={email}
+              value={values.email}
               onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Nome de Usuário"
-              value={username}
+              value={values.username}
               onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Password"
-              value={password}
+              value={values.password}
               onChange={handleInputChange}
             />
           </Column>
@@ -98,33 +85,45 @@ const AddUser = () => {
             <Input
               type="text"
               placeholder="Cidade"
-              value={city}
+              value={values.address.city}
               onChange={handleInputChange}
             />
 
             <Input
               type="text"
               placeholder="Rua"
-              value={street}
+              value={values.address.street}
               onChange={handleInputChange}
             />
 
             <Input
               type="text"
               placeholder="Numero"
-              value={number}
+              value={values.address.number}
               onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="Telefone"
-              value={phone}
+              value={values.phone}
               onChange={handleInputChange}
             />
             <Input
               type="text"
               placeholder="ZipCode"
-              value={zipcode}
+              value={values.address.zipcode}
+              onChange={handleInputChange}
+            />
+            <Input
+              type="text"
+              placeholder="latitude"
+              value={values.address.geolocation.lat}
+              onChange={handleInputChange}
+            />
+            <Input
+              type="text"
+              placeholder="Longitude"
+              value={values.address.geolocation.long}
               onChange={handleInputChange}
             />
           </Column>
