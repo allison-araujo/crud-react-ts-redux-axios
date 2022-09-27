@@ -59,3 +59,17 @@ export const Container = styled.div`
   flex-direction: row;
   text-decoration: none;
 `;
+
+export const Btn = styled.button`
+  display: flex;
+  width: 350px;
+  height: 350px;
+  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 50px;
+  align-items: center;
+  font-size: 30px;
+  color: #828282;
+  background-color: #dcdcdc;
+  border: 5px solid #000;
+`;
