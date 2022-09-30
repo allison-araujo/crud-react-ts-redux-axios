@@ -3,49 +3,35 @@ import http from "../../http/api";
 import { AppDispatch } from "./../../store";
 import { UserType } from "./../../ts/users";
 
-const initialState = [
-  {
-    id: 1,
-    email: "allison@gmail.com",
-    username: "allison",
-    password: "m38rmF$",
-    name: {
-      firstname: "Allison",
-      lastname: "Front end",
-    },
-    address: {
-      city: "corumba",
-      street: "rua vinicius",
-      number: 3,
-      zipcode: "12926-3874",
-      geolocation: {
-        lat: "-37.3159",
-        long: "81.1496",
-      },
-    },
-    phone: "67-99688-3374",
-  },
-];
+interface userSliceState {
+  user: UserType[];
+}
+
+const initialState: userSliceState = {
+  user: [],
+};
 
 const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
     createUser: (state, action) => {
-      state.push(action.payload);
+      state.user.push(action.payload);
     },
     getUsers: (state, action) => {
-      state = [action.payload];
+      state.user = [action.payload];
+      console.log("user slice", state.user);
     },
 
     deleteUserId: (state, action) => {
-      state = action.payload;
+      state.user = action.payload;
     },
   },
 });
 export const getUserAsync = () => async (dispatch: AppDispatch) => {
   try {
     const response = await http.get(`/users`);
+    console.log("response => ", response);
 
     dispatch(getUsers(response.data));
   } catch (error) {
