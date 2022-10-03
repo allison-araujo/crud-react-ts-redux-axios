@@ -15,7 +15,7 @@ export type UserNameType = {
   lastname: string;
 };
 
-export type UserType = {
+export type PropsUser = {
   address: UserAddressType;
   id: number;
   email: string;
@@ -25,7 +25,7 @@ export type UserType = {
   phone: string;
 };
 
-export type PropsUser = {
+export type UserType = {
   email: string;
   username: string;
   password: string;

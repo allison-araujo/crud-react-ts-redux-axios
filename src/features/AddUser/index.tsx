@@ -27,9 +27,25 @@ const AddUser = () => {
 
   const dispatch = useDispatch();
   const [values, setValues] = useState(initialValuesUser);
+  const {
+    email,
+    username,
+    password,
+
+    firstname,
+    lastname,
+    city,
+    street,
+    number,
+    zipcode,
+    lat,
+    long,
+    phone,
+  } = values;
 
   const handleSubmit = () => {
     dispatch(createUser(values));
+    console.log("dispatch values", values);
     navigate("/list-user");
   };
 
@@ -41,7 +57,7 @@ const AddUser = () => {
             <Input
               type="text"
               placeholder="Digite o nome.."
-              value={values.firstname}
+              value={firstname}
               onChange={e =>
                 setValues({ ...values, firstname: e.target.value })
               }
@@ -50,32 +66,32 @@ const AddUser = () => {
             <Input
               type="text"
               placeholder="Sobrenome"
-              value={values.lastname}
+              value={lastname}
               onChange={e => setValues({ ...values, lastname: e.target.value })}
             />
             <Input
               type="text"
               placeholder="Digite seu Email"
-              value={values.email}
+              value={email}
               onChange={e => setValues({ ...values, email: e.target.value })}
             />
             <Input
               type="text"
               placeholder="Nome de Usuário"
-              value={values.username}
+              value={username}
               onChange={e => setValues({ ...values, username: e.target.value })}
             />
             <Input
               type="text"
               placeholder="Password"
-              value={values.password}
+              value={password}
               onChange={e => setValues({ ...values, password: e.target.value })}
             />
 
             <Input
               type="text"
               placeholder="Cidade"
-              value={values.city}
+              value={city}
               onChange={e => setValues({ ...values, city: e.target.value })}
             />
           </Column>
@@ -83,38 +99,38 @@ const AddUser = () => {
             <Input
               type="text"
               placeholder="Rua"
-              value={values.street}
+              value={street}
               onChange={e => setValues({ ...values, street: e.target.value })}
             />
 
             <Input
               type="text"
               placeholder="Numero"
-              value={values.number}
+              value={number}
               onChange={e => setValues({ ...values, number: e.target.value })}
             />
             <Input
               type="text"
               placeholder="Telefone"
-              value={values.phone}
+              value={phone}
               onChange={e => setValues({ ...values, phone: e.target.value })}
             />
             <Input
               type="text"
               placeholder="ZipCode"
-              value={values.zipcode}
+              value={zipcode}
               onChange={e => setValues({ ...values, zipcode: e.target.value })}
             />
             <Input
               type="text"
               placeholder="latitude"
-              value={values.lat}
+              value={lat}
               onChange={e => setValues({ ...values, lat: e.target.value })}
             />
             <Input
               type="text"
               placeholder="Longitude"
-              value={values.long}
+              value={long}
               onChange={e => setValues({ ...values, long: e.target.value })}
             />
           </Column>

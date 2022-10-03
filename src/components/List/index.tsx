@@ -14,19 +14,19 @@ const List = ({ user }: ArrayUser) => {
           <Tbody key={item.id}>
             <TableUser
               key={item.id}
-              id={item.id}
-              firstname={item.name.firstname}
-              lastname={item.name.lastname}
+              lastname={item.lastname}
+              firstname={item.firstname}
               email={item.email}
               phone={item.phone}
-              city={item.address.city}
-              number={item.address.number}
+              city={item.city}
+              number={item.number}
               username={item.username}
-              lat={item.address.geolocation.lat}
-              long={item.address.geolocation.long}
-              street={item.address.street}
+              lat={item.lat}
+              long={item.long}
+              street={item.street}
               password={item.password}
-              zipcode={item.address.zipcode}
+              zipcode={item.zipcode}
+              id={0}
             />
           </Tbody>
         ))}
