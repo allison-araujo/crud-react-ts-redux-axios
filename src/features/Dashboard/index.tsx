@@ -7,13 +7,13 @@ const Dashboard = () => {
   return (
     <>
       <Direction>
-        <Link style={{ textDecoration: "none" }} to={`/list`}>
+        <Link style={{ textDecoration: "none" }} to={`/list-user`}>
           <Button text="Listar Usuários" />
         </Link>
-        <Link style={{ textDecoration: "none" }} to={`/add`}>
+        <Link style={{ textDecoration: "none" }} to={`/create-user`}>
           <Button text="Cadastrar Usuários" />
         </Link>
-        <Link style={{ textDecoration: "none" }} to={`/add/${id}`}>
+        <Link style={{ textDecoration: "none" }} to={`/update-user/${id}`}>
           <Button text="Editar Usuários" />
         </Link>
       </Direction>
