@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "redux-thunk/extend-redux";
 import Content from "../../components/Content";
 import Input from "../../components/Input/Input";
-import { createUser } from "../UserSlice/UserSlice";
+import { AppDispatch } from "../../store";
+import { UserType } from "../../ts";
+import { addUsersAsync } from "../UserSlice/UserSlice";
 import { Button, Column, Container, Row } from "./styles";
 
-const initialValuesUser = {
+const initialValuesUser: UserType = {
   email: "",
   username: "",
   password: "",
@@ -25,13 +28,12 @@ const initialValuesUser = {
 const AddUser = () => {
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const typedDispatch = useDispatch<AppDispatch>();
   const [values, setValues] = useState(initialValuesUser);
   const {
     email,
     username,
     password,
-
     firstname,
     lastname,
     city,
@@ -44,8 +46,8 @@ const AddUser = () => {
   } = values;
 
   const handleSubmit = () => {
-    dispatch(createUser(values));
-    console.log("dispatch values", values);
+    console.log("to no handle");
+    typedDispatch(addUsersAsync(values));
     navigate("/list-user");
   };
 
