@@ -34,7 +34,7 @@ export type UserType = {
   lastname: string;
   city: string;
   street: string;
-  number: number;
+  number: string;
   zipcode: string;
   lat: string;
   long: string;

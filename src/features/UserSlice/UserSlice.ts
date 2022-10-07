@@ -1,33 +1,43 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import "redux-thunk/extend-redux";
 import http from "../../http/api";
-import { AppDispatch } from "./../../store";
+import { AppDispatch } from "../../store";
+
 import { UserType } from "./../../ts/users";
 
-interface userSliceState {
-  user: UserType[];
-}
-
-const initialState: userSliceState = {
-  user: [],
+let initialState: UserType = {
+  email: "",
+  username: "",
+  password: "",
+  id: 0,
+  firstname: "",
+  lastname: "",
+  city: "",
+  street: "",
+  number: "",
+  zipcode: "",
+  lat: "",
+  long: "",
+  phone: "",
 };
 
 const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    createUser: (state, action) => {
-      state.user.push(action.payload);
+    createUser: (state, action: PayloadAction<UserType>) => {
+      state = action.payload;
     },
     getUsers: (state, action) => {
-      state.user = [action.payload];
-      console.log("user slice", state.user);
+      state = action.payload;
     },
 
     deleteUserId: (state, action) => {
-      state.user = action.payload;
+      state = action.payload;
     },
   },
 });
+
 export const getUserAsync = () => async (dispatch: AppDispatch) => {
   try {
     const response = await http.get(`/users`);
@@ -40,7 +50,7 @@ export const getUserAsync = () => async (dispatch: AppDispatch) => {
 };
 
 export const addUsersAsync =
-  (user: UserType) => async (dispatch: AppDispatch) => {
+  async (user: UserType) => async (dispatch: AppDispatch) => {
     try {
       const response = await http.post(`/users`, user);
 
@@ -62,5 +72,7 @@ export const deleteUserState =
   };
 
 export const { createUser, getUsers, deleteUserId } = userSlice.actions;
+export const getAllUsers = (state: { users: { user: UserType } }) =>
+  state.users.user;
 
 export default userSlice.reducer;
