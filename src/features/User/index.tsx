@@ -1,10 +1,10 @@
-import { useAppSelector } from "../../hooks/useRedux";
-import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import List from "../../components/List";
+import { getAllUsers } from "../UserSlice/UserSlice";
 import { Container, Table, Th, Thead, Tr } from "./styles";
 
 const UsersList = () => {
-  const userValues = useAppSelector((state: RootState) => state);
-  console.log("userValues", userValues);
+  const users = useSelector(getAllUsers);
 
   return (
     <Container>
@@ -19,7 +19,7 @@ const UsersList = () => {
             <Th>Cidade</Th>
           </Tr>
         </Thead>
-        {/* <List user={userValues} /> */}
+        <List user={users} />
       </Table>
     </Container>
   );
